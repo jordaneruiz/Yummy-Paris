@@ -8,11 +8,17 @@ The game ends whenever you eat a donuts. The score rise up everytime to eat a cr
 
 ## MVP (DOM - CANVAS)
 • Optional // Game allow you to select 1 of the 2 characters available
+
 • Once you selected you character you have to make it jump to catch 
+
 • Croissants & Donuts start arriving towards the player
+
 • Player has to jump or stay fix to catch the croissant
+
 • Player has to jump or goes down to avoir the Donuts
+
 • Optional // The better the player is, the more donuts appear on the screen? -> Increasing dificulty the 
+
 
 
 
@@ -69,6 +75,6 @@ gameTime(){}
 
 
 ### Git
-URls for the project repo and deploy
+URls for the [project repo](https://github.com/jordaneruiz/Yummy-Paris.git) and deploy
 
 
