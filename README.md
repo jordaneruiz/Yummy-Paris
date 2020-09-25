@@ -7,19 +7,17 @@ The game ends whenever you eat a donuts. The score rise up everytime to eat a cr
 
 
 ## MVP (DOM - CANVAS)
-• Optional // Game allow you to select 1 of the 2 characters available
-• Once you selected you character you have to make it jump to catch 
+• Character has to make a jump to catch the croissants
 • Croissants & Donuts start arriving towards the player
 • Player has to jump or stay fix to catch the croissant
 • Player has to jump or goes down to avoir the Donuts
-• Optional // The better the player is, the more donuts appear on the screen? -> Increasing dificulty the 
+• Score is display on the top left corner
 
 
 
 ## BACKLOG
-• Add a scrore
-• Increased dificulty lvl depending on score. The higher is the score the faster the food arrive
-• Add sounds & music backgroud
+• Game allows you to select 1 of the 2 characters available
+• The better the player is, the more donuts appear on the screen? -> Increasing dificulty lvl depending on score. The higher is the score the faster the food arrives
 
 
 ## DATA STRUCTURE
@@ -60,4 +58,36 @@ gameTime(){}
 
 
 # food.js
+
+## Task
+
+- 1 - Build the skelleton
+  - build the DOM
+  - buildSplashScreen
+  - buildGameScreen
+
+- 2 - Create the assets
+  - Game screen basics: start game, draw the background
+  - Create player characters: (create a class?)
+  - Draw player on Game screen
+  - Create food elements to catch: croissants
+  - Draw croissants
+  - Create food elements to avoid: donuts
+  - Draw donuts
+  - Create music elements
+
+- 3  - Build the Game
+   - Build player movement
+   - Build collisions
+ 
+
+ - 4 - Put everything together
+   - Incorporate collisions on the stage
+   - Game over function
+   - Build Retry screen
+
+
+- 5 - Extra Features 
+    - Sounds when eat
+    - backgroud sound
 
