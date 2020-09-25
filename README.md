@@ -61,3 +61,14 @@ gameTime(){}
 
 # food.js
 
+## Links
+
+
+### Trello
+[Trello page](https://trello.com/b/htlPz7VD/ironhack-m1-project)
+
+
+### Git
+URls for the project repo and deploy
+
+
