@@ -8,10 +8,8 @@ The game ends whenever you eat a donuts. The score rise up everytime to eat a cr
 
 ## MVP (DOM - CANVAS)
 • Character has to make a jump to catch the croissants
-• Croissants & Donuts start arriving towards the player
-
+• Croissants & Donuts start arriving from the right towards the player
 • Player has to jump or stay fix to catch the croissant
-
 • Player has to jump or goes down to avoir the Donuts
 • Score is display on the top left corner
 
@@ -31,8 +29,6 @@ buildGameScreen ()
 buildGameOverScreen () {}
 
 # game.js
-
-
 drawCanvas () {}
 
 addEventListener( 'mouseup' )
@@ -53,17 +49,13 @@ collisionsCleaner(){}
 
 GameOver () {}
 
-
 gameOver(){}
 gameTime(){}
 
-# character.js
-
-
-# food.js
+# character.js ??
+# food.js ??
 
 ## Task
-
 - 1 - Build the skelleton
   - build the DOM
   - buildSplashScreen
@@ -83,15 +75,16 @@ gameTime(){}
    - Build player movement
    - Build collisions
  
-
  - 4 - Put everything together
    - Incorporate collisions on the stage
    - Game over function
    - Build Retry screen
-
 
 - 5 - Extra Features 
     - Sounds when eat
     - backgroud sound
     - try
 
+## Links
+
+[Trello link](https://trello.com/b/htlPz7VD/ironhack-m1-project)
