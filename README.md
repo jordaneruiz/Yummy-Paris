@@ -13,7 +13,6 @@ The game ends whenever you eat a donuts. The score rise up everytime to eat a cr
 
 
 ## BACKLOG
-• Game allows you to select 1 of the 2 characters available
 • The better the player is, the more donuts appear on the screen? -> Increasing dificulty lvl depending on score. The higher is the score the faster the food arrives
 • Player can Jump
 
