@@ -1,20 +1,24 @@
 //Canva creation
 let canvas = document.querySelector('canvas');
 let intervalId = 0; 
+let ctx;
     
 
 //Images
 let background = new Image();
-background.src = 'ParisBG3.jpg';
+background.src = 'Images/ParisBG3.jpg';
 
 let playerImg = new Image();
-playerImg.src = 'FR-SMALL-GIRL.png';
+playerImg.src = 'Images/FR-SMALL-GIRL.png';
 
 let donutsImg = new Image();
-donutsImg.src = 'donuts.png';
+donutsImg.src = 'Images/donuts.png';
 
 let croissantImg = new Image();
-croissantImg.src = 'croissant.png';
+croissantImg.src = 'Images/croissant.png';
+
+let myMusic = new Audio();
+myMusic.src = "French-Musette.wav";
 
 //Variables
 let score = 0;
@@ -47,7 +51,9 @@ let croissants = [] ;
 let donutsXincrement = 5;
 let donutsYincrement = 5;
 
-let collidedCroissant;
+let collidedCroissant = [];
+
+let winningScore = 15; 
 
 
 
@@ -87,9 +93,31 @@ document.addEventListener('keyup', function(event){
 })
 
 
+//create audio function 
+// function Sound(src) {
+//     this.Sound = document.createElement("audio");
+//     this.Sound.src = src;
+//     this.Sound.setAttribute("preload", "auto", "controls", "none");
+//     this.Sound.style.display = "none";
+//     this.Sound.volume = 0.50;
+//     document.body.appendChild(this.Sound);
+//     this.play = function(){
+//       this.Sound.play();
+//     }
+//     this.stop = function(){
+//       this.Sound.pause();
+//     }
+//   }
+
+function newSound() {
+    // myMusic = new Audio("French-Musette.wav")
+    myMusic.volume = "0.05";
+    myMusic.play();
+  }
 
 
 const startGame = () => {
+    
     ctx.drawImage(background, 0, 0 )
     ctx.drawImage(playerImg, playerX, playerY )
     ctx.font = '22px Verdana'
@@ -109,34 +137,25 @@ const startGame = () => {
     }
 
 
-    //console.log("playerX is:" + playerX + " and playerImg.x is: " + playerImg.x)
     //call all the functions
     addDonuts();
     moveDonuts();
     addCroissants();
     movecroissants();
-
-    
-
-    
-
+    newSound();
 
     //playerY += playerIncrement
     //player = new Player(120, canvas.height, 60, 90);
     
-    
-
     // resetDonuts(donut);
 };
 
 //add donuts
 const addDonuts = () => {
     let randomPossibility = Math.floor(Math.random() * 200) 
-    //console.log("randomPossibility:" + randomPossibility)
     //randomPlace = place on x axis
     let randomPlace = Math.floor(Math.random() * canvas.width)
     //console.log("randomPlace:" + randomPlace)
- 
     if(randomPossibility === 1){
         var donut = {
             x: randomPlace,
@@ -146,14 +165,9 @@ const addDonuts = () => {
     } 
 }
 
-// const resetDonuts = (donut) => {
-//     donut.x = Math.random() * (canvas.width - donutsImg.width);
-//     donut.y = 15 + Math.floor(Math.random() * 30) + 1;  
-//     donut.speed = 0.9 + Math.random() * 0.5;
-// }  
  
 const moveDonuts = () => {
-    donuts.forEach(function(donut){
+    donuts.forEach((donut) => {
         donut.y++  
     })
 }
@@ -172,16 +186,16 @@ const addCroissants = () => {
 }
 
 const movecroissants = () => {
-    croissants.forEach(function(croissant){
+    croissants.forEach((croissant) => {
         croissant.y++  //si quiero que se mueva mas rapido le pongo que sea +10 o un numero
     })
 }
 
-//collision with donuts
+
+// collision with donuts
 const collisionDonuts = (i) => {
     //Did they collide together?
     //Check if a donut collides with the player
-
     
     if (playerX < donuts[i].x + donutsImg.width &&
         playerX + playerX.width > donuts[i].x &&
@@ -193,34 +207,58 @@ const collisionDonuts = (i) => {
         alert('GAME OVER');
         location.reload(); 
      } 
-
 } 
 
+//---------------------//
+
+
+
 const collisionCroissants = (i) => {
+    //let removeCroissants = [];
 
      if (playerX < croissants[i].x + croissantImg.width &&
         playerX + playerImg.width > croissants[i].x &&
         playerY < croissants[i].y + croissantImg.height &&
         playerY + playerImg.height > croissants[i].y) 
         {
-          if (collidedCroissant !== croissants[i]) {
+          if (croissants[i] !== collidedCroissant) {
             score += 1;
-            if (score > 15) {
+            //removeCroissants.push(croissants[i]);
+
+            //removeCroissants.push(croissants[i])
+            if (score >= winningScore) {
                 clearInterval(intervalId);
                 alert('YOU WON');
             }
-            // croissants[i].splice(croissants[i], 1);
+            croissants.splice(i, 1);
           } 
+          //collidedCroissant = removeCroissants; 
+          //collidedCroissant.push(croissants[i]);
           collidedCroissant = croissants[i]; 
-     } 
+    }
 }
 
 
 
 
-intervalId = setInterval(() => {
-    requestAnimationFrame(startGame)
-}, 10)
+// const collisionCroissants = () => {
+//     let croissantsToRemove =  []; 
+
+//     croissants.forEach((croissant) => {
+//         if (playerX < croissants[i].x + croissantImg.width &&
+//             playerX + playerImg.width > croissants[i].x &&
+//             playerY < croissants[i].y + croissantImg.height &&
+//             playerY + playerImg.height > croissants[i].y);
+//     })
+//     //score++;
+//     //croissantsToRemove.push(croissant);
+// }
+
+
+
+// intervalId = setInterval(() => {
+//     requestAnimationFrame(startGame)
+// }, 10)
 
 
 

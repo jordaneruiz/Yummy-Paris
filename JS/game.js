@@ -21,16 +21,20 @@ button.addEventListener('click', () => {
 
     //Images
     background = new Image();
-    background.src = 'ParisBG3.jpg';
+    background.src = 'Images/ParisBG3.jpg';
 
     playerImg = new Image();
-    playerImg.src = 'FR-SMALL-GIRL.png';
+    playerImg.src = 'Images/FR-SMALL-GIRL.png';
 
     donutsImg = new Image();
-    donutsImg.src = 'donuts.png';
+    donutsImg.src = 'Images/donuts.png';
 
     croissantImg = new Image();
-    croissantImg.src = 'croissant.png';
+    croissantImg.src = 'Images/croissant.png';
+
+    //sound
+    myMusic = new Audio();
+    myMusic.src = "French-Musette.wav";
 
     intervalId = setInterval(() => {
             requestAnimationFrame(startGame)

@@ -7,16 +7,15 @@ The game ends whenever you eat a donuts. The score rise up everytime to eat a cr
 
 
 ## MVP (DOM - CANVAS)
-• Character has to make a jump to catch the croissants
-• Croissants & Donuts start arriving from the right towards the player
-• Player has to jump or stay fix to catch the croissant
-• Player has to jump or goes down to avoir the Donuts
-• Score is display on the top left corner
+• Character has to move from left to right to catch croissants and avoid Donuts
+• Croissants & Donuts start arriving from the top of the screen
+• Score is display on the top left corner. 1 croissant touched is +1 point to the score
 
 
 ## BACKLOG
 • Game allows you to select 1 of the 2 characters available
 • The better the player is, the more donuts appear on the screen? -> Increasing dificulty lvl depending on score. The higher is the score the faster the food arrives
+• Player can Jump
 
 
 ## DATA STRUCTURE

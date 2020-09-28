@@ -3,6 +3,7 @@
 body {
     font-family: "Roboto";
     line-height: 2px;
+    
 }
 
 .et-pic {
@@ -25,15 +26,21 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    align-content: center;
     border: solid #81d6e6 6px; 
     border-radius: 15px;
-    width: 700px;
-    padding-top: 30px;
+    width: 600px;
+    height: 800px;
+    padding: 0 auto;
+    margin: 0 auto;
+
 
 }
   
 .paris-pic {
-    height: 300px;
+    height: auto;
+    width: 100%;
+    /* margin-bottom: 50px; */
 }
 
   /* body > div {
@@ -71,4 +78,16 @@ h2 {
 
   p {
     line-height: 0.05em;
+  }
+
+  /*Canvas Style*/
+
+  #myCanvas {
+      border: 2px solid greenyellow;
+      display: block;
+      margin: 0 auto;
+      width: 500px;
+      height: 550px;
+      margin-top: 10%;
+      
   }
