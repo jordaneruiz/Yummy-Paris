@@ -14,8 +14,6 @@ The game ends whenever you eat a donuts. The score rise up everytime to eat a cr
 • Score is display on the top left corner
 
 
-
-
 ## BACKLOG
 • Game allows you to select 1 of the 2 characters available
 • The better the player is, the more donuts appear on the screen? -> Increasing dificulty lvl depending on score. The higher is the score the faster the food arrives
@@ -58,8 +56,10 @@ gameTime(){}
 ## Task
 - 1 - Build the skelleton
   - build the DOM
-  - buildSplashScreen
-  - buildGameScreen
+  - build SplashScreen
+  - build GameScreen
+  - built YouWonScreen
+  - built GameOverScreen / Retry
 
 - 2 - Create the assets
   - Game screen basics: start game, draw the background
@@ -78,7 +78,8 @@ gameTime(){}
  - 4 - Put everything together
    - Incorporate collisions on the stage
    - Game over function
-   - Build Retry screen
+   - You WOn function
+   
 
 - 5 - Extra Features 
     - Sounds when eat
