@@ -26,6 +26,9 @@ croissantImg.src = 'Images/croissant.png';
 let yummySound = new Audio();
 yummySound.src = "yummy.mp3";
 
+let gameOverImg = new Image();
+gameOverImg.src = 'Images/stupidfrench3.jpg';
+
 //Variables
 let score = 0;
 let playerX = 120;
@@ -55,7 +58,7 @@ let donutsXincrement = 5;
 let donutsYincrement = 5;
 
 let collidedCroissant = [];
-let winningScore = 2; 
+let winningScore = 5; 
 
 
 
@@ -96,16 +99,15 @@ document.addEventListener('keyup', function(event){
 
 
 
-// const newSound = () => {
-//     // myMusic = new Audio("French-Musette.wav")
-//     myMusic.volume = "0.05";
-//     myMusic.play();
-//   }
+const newSound = () => {
+    myMusic.volume = "0.05";
+    myMusic.play();
+  }
 
-// const yummySound = () => {
-//     myMusic.volume = "0.05";
-//     myMusic.play();
-// }
+const playYummySound = () => {
+    yummySound.volume = "0.9";
+    yummySound.play();
+}
 
 
 //-------- Start Game Funtion --------//
@@ -136,7 +138,7 @@ const startGame = () => {
     moveDonuts();
     addCroissants();
     movecroissants();
-    //newSound();
+    newSound();
 
     //playerY += playerIncrement
     //player = new Player(120, canvas.height, 60, 90);
@@ -196,14 +198,15 @@ const collisionDonuts = (i) => {
     //Did they collide together?
     //Check if a donut collides with the player
     
-    if (playerX < donuts[i].x + donutsImg.width &&
-        playerX + donutsImg.width > donuts[i].x &&
-        playerY < donuts[i].y + donutsImg.height &&
-        playerY + donutsImg.height > donuts[i].y) 
+    if (playerX < (donuts[i].x -25) + donutsImg.width  &&
+        playerX + donutsImg.width> (donuts[i].x -25) &&
+        playerY < (donuts[i].y -10) + donutsImg.height &&
+        playerY + donutsImg.height > (donuts[i].y -10)) 
         {
          // collision detected!
         clearInterval(intervalId);
-        alert('GAME OVER');
+        gameOver();
+        //alert('GAME OVER');
         //location.reload(); 
      } 
 } 
@@ -221,24 +224,49 @@ const collisionCroissants = (i) => {
         playerY < croissants[i].y + croissantImg.height &&
         playerY + playerImg.height > croissants[i].y) 
         {
-          if (croissants[i] !== collidedCroissant) {
+          if (!collidedCroissant.includes(i)) {
+            playYummySound();
             score += 1;
-            yummySound();
+            collidedCroissant.push(i)
+            
             //removeCroissants.push(croissants[i]);
             //removeCroissants.push(croissants[i])
             if (score >= winningScore) {
                 clearInterval(intervalId);
                 // alert('YOU WON');
                 location.href = 'youWinScreen.html';
-
             }
             croissants.splice(i, 1);
+            //console.log(croissants);
           } 
           //collidedCroissant = removeCroissants; 
           //collidedCroissant.push(croissants[i]);
-          collidedCroissant = croissants[i]; 
+          //collidedCroissant = croissants[i]; 
     }
 }
+
+
+//-------- GameOver Function --------//
+
+const gameOver = () => {
+
+    document.getElementById('myCanvas');
+    ctx = canvas.getContext('2d');
+    
+    //newSound.stop()
+    canvas.remove("croissantImg")
+    canvas.remove("donutsImg")
+    canvas.remove("background")
+
+    //canvas.style.backgroundColor = "white";
+    let gameOverImg = new Image();
+    gameOverImg.src = "Images/stupidfrench3.jpg";
+    //gameOverImg.onload = function(){
+        ctx.drawImage(gameOverImg, 0, 0);
+        
+        // game.load.image('start', 'button.png');
+};
+
 
 
 //-------- Win Function --------//

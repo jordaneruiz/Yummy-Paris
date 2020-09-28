@@ -14,7 +14,13 @@ button.addEventListener('click', () => {
     body.appendChild(canvasContainer)
 
     canvas = document.querySelector('canvas');
-    canvas.style.border = "1px solid black";
+    canvas.style.border = "7px solid #81d6e6";
+    canvas.style.backgroundColor = "#81d6e6";
+    canvas.style.borderRadius = "5%";
+
+
+
+
 
     ctx = canvas.getContext('2d');
     intervalId = 0; 
@@ -33,11 +39,11 @@ button.addEventListener('click', () => {
     // croissantImg.src = 'Images/croissant.png';
 
     //sound
-    // myMusic = new Audio();
-    // myMusic.src = "French-Musette.wav";
-    
-    yummySound = new Audio();
-    yummySound.src = "yummy.mp3";
+    myMusic = new Audio();
+    myMusic.src = "French-Musette.wav";
+
+    // yummySound = new Audio();
+    // yummySound.src = "yummy.mp3";
 
     intervalId = setInterval(() => {
             requestAnimationFrame(startGame)
