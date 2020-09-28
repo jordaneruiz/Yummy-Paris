@@ -17,11 +17,18 @@ h1 {
     font-weight: 300;
   }
 
+  .youwon {
+    color: #81d6e6;
+    font-size: 50px;
+    /* line-height: 1em; */
+    font-weight: 300;
+  }
+
 h2 {
 
 }
 
-.splashscreen {
+.splashscreen, .winscreen {
     display: flex; 
     flex-direction: column;
     align-items: center;
@@ -33,8 +40,6 @@ h2 {
     height: 800px;
     padding: 0 auto;
     margin: 0 auto;
-
-
 }
   
 .paris-pic {
@@ -89,5 +94,8 @@ h2 {
       width: 500px;
       height: 550px;
       margin-top: 10%;
-      
+  }
+
+  iframe {
+    height: 100px;
   }

@@ -20,25 +20,28 @@ button.addEventListener('click', () => {
     intervalId = 0; 
 
     //Images
-    background = new Image();
-    background.src = 'Images/ParisBG3.jpg';
+    // background = new Image();
+    // background.src = 'Images/ParisBG3.jpg';
 
-    playerImg = new Image();
-    playerImg.src = 'Images/FR-SMALL-GIRL.png';
+    // playerImg = new Image();
+    // playerImg.src = 'Images/FR-SMALL-GIRL.png';
 
-    donutsImg = new Image();
-    donutsImg.src = 'Images/donuts.png';
+    // donutsImg = new Image();
+    // donutsImg.src = 'Images/donuts.png';
 
-    croissantImg = new Image();
-    croissantImg.src = 'Images/croissant.png';
+    // croissantImg = new Image();
+    // croissantImg.src = 'Images/croissant.png';
 
     //sound
-    myMusic = new Audio();
-    myMusic.src = "French-Musette.wav";
+    // myMusic = new Audio();
+    // myMusic.src = "French-Musette.wav";
+    
+    yummySound = new Audio();
+    yummySound.src = "yummy.mp3";
 
     intervalId = setInterval(() => {
             requestAnimationFrame(startGame)
-    }, 10)
+    }, 8)
 
 })
 //add the event listener that will call he game

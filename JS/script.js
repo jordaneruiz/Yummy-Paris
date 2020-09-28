@@ -8,6 +8,9 @@ let ctx;
 let background = new Image();
 background.src = 'Images/ParisBG3.jpg';
 
+// let bakgroundWin = new Image();
+// bakgroundWin = "https://tenor.com/view/trump-macron-macron-trump-emmanuel-macron-donald-trump-gif-12954394"
+
 let playerImg = new Image();
 playerImg.src = 'Images/FR-SMALL-GIRL.png';
 
@@ -17,8 +20,11 @@ donutsImg.src = 'Images/donuts.png';
 let croissantImg = new Image();
 croissantImg.src = 'Images/croissant.png';
 
-let myMusic = new Audio();
-myMusic.src = "French-Musette.wav";
+// let myMusic = new Audio();
+// myMusic.src = "French-Musette.wav";
+
+let yummySound = new Audio();
+yummySound.src = "yummy.mp3";
 
 //Variables
 let score = 0;
@@ -40,20 +46,16 @@ let donuts = [ { x: 700, y: 150 } ];
 let donutsX = donuts.x; // x position
 let donutsY = donuts.y; // y position
 
-
-
 let croissantsX = 150; // x position
 let croissantsY = 150; // y position
 let totalcroissants = 10;
 let croissants = [] ;
 
-
 let donutsXincrement = 5;
 let donutsYincrement = 5;
 
 let collidedCroissant = [];
-
-let winningScore = 15; 
+let winningScore = 2; 
 
 
 
@@ -67,10 +69,10 @@ document.addEventListener('keydown', (event) => {
         // playerY = playerY + 120;
     } 
 })
-//timeout somewhere here
 
 
-//eventlisteners move the girl to R & L
+//-------- Move the girl to R & L --------//
+//-------- --------------------- --------//
 document.addEventListener('keydown', function(event){
     if (event.key === 'ArrowRight'){
         if (playerX + playerMovement < canvas.width - playerMovement) {
@@ -93,29 +95,21 @@ document.addEventListener('keyup', function(event){
 })
 
 
-//create audio function 
-// function Sound(src) {
-//     this.Sound = document.createElement("audio");
-//     this.Sound.src = src;
-//     this.Sound.setAttribute("preload", "auto", "controls", "none");
-//     this.Sound.style.display = "none";
-//     this.Sound.volume = 0.50;
-//     document.body.appendChild(this.Sound);
-//     this.play = function(){
-//       this.Sound.play();
-//     }
-//     this.stop = function(){
-//       this.Sound.pause();
-//     }
+
+// const newSound = () => {
+//     // myMusic = new Audio("French-Musette.wav")
+//     myMusic.volume = "0.05";
+//     myMusic.play();
 //   }
 
-function newSound() {
-    // myMusic = new Audio("French-Musette.wav")
-    myMusic.volume = "0.05";
-    myMusic.play();
-  }
+// const yummySound = () => {
+//     myMusic.volume = "0.05";
+//     myMusic.play();
+// }
 
 
+//-------- Start Game Funtion --------//
+//-------- ----------------- --------//
 const startGame = () => {
     
     ctx.drawImage(background, 0, 0 )
@@ -142,7 +136,7 @@ const startGame = () => {
     moveDonuts();
     addCroissants();
     movecroissants();
-    newSound();
+    //newSound();
 
     //playerY += playerIncrement
     //player = new Player(120, canvas.height, 60, 90);
@@ -150,7 +144,9 @@ const startGame = () => {
     // resetDonuts(donut);
 };
 
-//add donuts
+//-------- Add & Move Donuts --------//
+//-------- ---------------- --------//
+
 const addDonuts = () => {
     let randomPossibility = Math.floor(Math.random() * 200) 
     //randomPlace = place on x axis
@@ -172,7 +168,8 @@ const moveDonuts = () => {
     })
 }
 
-//add croissants
+//-------- Add & Move Croissants --------//
+//-------- -------------------- --------//
 const addCroissants = () => {
     let randomPossibility = Math.floor(Math.random() * 400) //botellas que caeran --> 1 de 20 posibilidades de que se cree un nuevo vino en un lugar aleatorio
     let randomPlace = Math.floor(Math.random() * canvas.width)
@@ -192,26 +189,29 @@ const movecroissants = () => {
 }
 
 
-// collision with donuts
+//-------- Donuts Collision --------//
+//-------- --------------- --------//
+
 const collisionDonuts = (i) => {
     //Did they collide together?
     //Check if a donut collides with the player
     
     if (playerX < donuts[i].x + donutsImg.width &&
-        playerX + playerX.width > donuts[i].x &&
+        playerX + donutsImg.width > donuts[i].x &&
         playerY < donuts[i].y + donutsImg.height &&
-        playerY + playerX.height > donuts[i].y) 
+        playerY + donutsImg.height > donuts[i].y) 
         {
          // collision detected!
         clearInterval(intervalId);
         alert('GAME OVER');
-        location.reload(); 
+        //location.reload(); 
      } 
 } 
 
-//---------------------//
 
 
+//-------- Croissants Collision --------//
+//-------- ------------------- --------//
 
 const collisionCroissants = (i) => {
     //let removeCroissants = [];
@@ -223,12 +223,14 @@ const collisionCroissants = (i) => {
         {
           if (croissants[i] !== collidedCroissant) {
             score += 1;
+            yummySound();
             //removeCroissants.push(croissants[i]);
-
             //removeCroissants.push(croissants[i])
             if (score >= winningScore) {
                 clearInterval(intervalId);
-                alert('YOU WON');
+                // alert('YOU WON');
+                location.href = 'youWinScreen.html';
+
             }
             croissants.splice(i, 1);
           } 
@@ -239,6 +241,26 @@ const collisionCroissants = (i) => {
 }
 
 
+//-------- Win Function --------//
+
+// const youWon = () => {
+//     let canvas = document.querySelector('canvas');
+//     let ctx = canvas.getContext('2d')
+//     let bakgroundWin = new Image();
+
+//     bakgroundWin.onload = function(){
+//     ctx.drawImage(bakgroundWin, 0, 0, 760, 760);
+//     mySound.stop();
+//     // game.load.image('start', 'button.png');
+// };
+// bakgroundWin = "https://tenor.com/view/trump-macron-macron-trump-emmanuel-macron-donald-trump-gif-12954394"
+
+// winSound.play();
+// wines=[];
+// score=0;
+// dead=0;
+
+// }
 
 
 // const collisionCroissants = () => {
