@@ -58,7 +58,7 @@ let donutsXincrement = 5;
 let donutsYincrement = 5;
 
 let collidedCroissant = [];
-let winningScore = 5; 
+let winningScore = 2; 
 
 
 
@@ -205,6 +205,7 @@ const collisionDonuts = (i) => {
         {
          // collision detected!
         clearInterval(intervalId);
+        //newSound.stop();
         gameOver();
         //alert('GAME OVER');
         //location.reload(); 
@@ -250,21 +251,18 @@ const collisionCroissants = (i) => {
 
 const gameOver = () => {
 
-    document.getElementById('myCanvas');
-    ctx = canvas.getContext('2d');
+    let canvas = document.querySelector('canvas')
+    canvas.className = 'hidden'
     
     //newSound.stop()
-    canvas.remove("croissantImg")
-    canvas.remove("donutsImg")
-    canvas.remove("background")
-
-    //canvas.style.backgroundColor = "white";
-    let gameOverImg = new Image();
-    gameOverImg.src = "Images/stupidfrench3.jpg";
-    //gameOverImg.onload = function(){
-        ctx.drawImage(gameOverImg, 0, 0);
-        
-        // game.load.image('start', 'button.png');
+    let iframe = document.createElement('iframe')
+    iframe.src = 'gameOverScreen.html'
+    let body = document.querySelector('body') // get the body tag of your main html file
+    canvas.parentNode.removeChild(canvas)
+    body.appendChild(iframe)
+    iframe.className = "iframe-gameover"
+    newSound.stop();
+    // game.load.image('start', 'button.png');
 };
 
 

@@ -3,6 +3,7 @@
 body {
     font-family: "Roboto";
     line-height: 2px;
+    height: 800px;
     
 }
 
@@ -15,20 +16,23 @@ h1 {
     font-size: 70px;
     /* line-height: 1em; */
     font-weight: 300;
+    margin-top: 70px;
   }
 
-  .youwon {
+  .youwon,  .youlost {
     color: #81d6e6;
     font-size: 50px;
     /* line-height: 1em; */
     font-weight: 300;
   }
 
+ 
+
 h2 {
 
 }
 
-.splashscreen, .winscreen {
+.splashscreen, .winscreen, .gameoverscreen {
     display: flex; 
     flex-direction: column;
     align-items: center;
@@ -70,8 +74,7 @@ h2 {
     font-size: 16px;
     font-weight: 900;
     margin-top: 40px;
-    margin-bottom: 40px;
-
+    margin-bottom: 50px;
     }  
 
     button:hover {
@@ -88,7 +91,7 @@ h2 {
   /*Canvas Style*/
 
   #myCanvas {
-      border: 2px solid greenyellow;
+      /* border: 2px solid greenyellow; */
       display: block;
       margin: 0 auto;
       width: 500px;
@@ -98,4 +101,35 @@ h2 {
 
   iframe {
     height: 100px;
+  }
+
+
+  /* to hide the canvas when gameOver */
+  .hidden {
+    display: none;
+  }
+
+  Body > .iframe-gameover {
+    height: 100%;
+    width: 100%; 
+  }
+
+  .giphy-embed {
+    border: solid #81d6e6 5px; 
+    border-radius: 15px;
+    background-color: #81d6e6;
+    width: 170px;
+    height: 95px; 
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .gameoverscreen > button {
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+
+  .winscreen > button {
+    margin-top: 0px;    
+    margin-bottom: 15px;
   }
