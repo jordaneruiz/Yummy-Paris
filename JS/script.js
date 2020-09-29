@@ -26,6 +26,9 @@ myMusic.src = "French-Musette.wav";
 let yummySound = new Audio();
 yummySound.src = "yummy.mp3";
 
+let ohlalaSound = new Audio();
+ohlalaSound.src = "ohlala.mp3";
+
 let gameOverImg = new Image();
 gameOverImg.src = 'Images/stupidfrench3.jpg';
 
@@ -58,7 +61,7 @@ let donutsXincrement = 5;
 let donutsYincrement = 5;
 
 let collidedCroissant = [];
-let winningScore = 8; 
+let winningScore = 10; 
 
 
 
@@ -110,6 +113,10 @@ const playYummySound = () => {
     yummySound.play();
 }
 
+const playOhlalaSound = () => {
+    ohlalaSound.volume = "0.9";
+    ohlalaSound.play();
+}
 
 //-------- Start Game Funtion --------//
 //-------- ----------------- --------//
@@ -258,7 +265,7 @@ const collisionCroissants = (i) => {
 //-------- GameOver Function --------//
 
 const gameOver = () => {
-    
+    playOhlalaSound();
     clearInterval(intervalId);
 
     myMusic.currentTime = 0; 
@@ -277,28 +284,26 @@ const gameOver = () => {
     body.appendChild(iframe) // append the frame we just created to the body
     
     //canvas.load.image('start', 'button.png');
-    
-
+};
     // button.addEventListener('click', () => {
-    //     //when button is clicked it removes the GOver screen & add the canvas
-    //     let canvasContainer = document.createElement("div")
-    //     canvasContainer.innerHTML = `<canvas id="myCanvas" width="600" height="698"></canvas>`
-        
-    //     iframe.parentNode.removeChild(iframe) // or body.romoveChild(splashscreen)
-    //     body.appendChild(canvasContainer)
-    
-    //     canvas = document.querySelector('canvas');
-    //     canvas.style.border = "7px solid #81d6e6";
-    //     canvas.style.backgroundColor = "#81d6e6";
-    //     canvas.style.borderRadius = "5%";
-    
+    // //     //when button is clicked it removes the GOver screen & add the canvas
+   
+    //     let iframeGameOver = document.getElementsByClassName('.iframe-gameover');
+    //     iframeGameOver.className = 'hidden';
+
+    //     let canvas = document.querySelector('canvas')
+    //     let body = document.querySelector('body') // get the body tag of your main html file
+    //     iframeGameOver.parentNode.removeChild(iframeGameOver) //remove the canvas from the body
+    //     body.appendChild(canvas)
+    // });
 
     
     //     ctx = canvas.getContext('2d');
     //     intervalId = 0; 
     // })
 
-};
+    // }
+
 
 // const youWin = () => {
     
