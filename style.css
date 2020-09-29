@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
 body {
     font-family: "Roboto";
     line-height: 2px;
@@ -11,12 +11,26 @@ body {
     height: 120px;
     margin: 0px;
 }
+
 h1 {
+  font-family: "Roboto";
+  color: #81d6e6;
+  font-size: 70px;
+  font-weight: 300;
+  margin-top: 70px;
+}
+ .splash-title {
+    font-family: "Dancing Script";
     color: #81d6e6;
     font-size: 70px;
     /* line-height: 1em; */
     font-weight: 300;
     margin-top: 70px;
+  } 
+
+  .splash-title-2 {
+    font-family: "Dancing Script";
+    font-size: 40px;
   }
 
   .youwon,  .youlost {
@@ -28,9 +42,7 @@ h1 {
 
  
 
-h2 {
 
-}
 
 .splashscreen, .winscreen, .gameoverscreen {
     display: flex; 

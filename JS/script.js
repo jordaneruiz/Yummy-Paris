@@ -148,7 +148,8 @@ const startGame = () => {
     moveDonuts();
     addCroissants();
     movecroissants();
-    
+    // resetDonuts();
+    // resetCroissants();
 
     //playerY += playerIncrement
     //player = new Player(120, canvas.height, 60, 90);
@@ -162,8 +163,8 @@ const startGame = () => {
 const addDonuts = () => {
     let randomPossibility = Math.floor(Math.random() * 190) 
     //randomPlace = place on x axis
-    let randomPlace = Math.floor(Math.random() * canvas.width)//minus something* to stop the food from going out
-    //console.log("randomPlace:" + randomPlace)
+    let randomPlace = Math.floor(Math.random() * (canvas.width  - 30))//minus something* to stop the food from going out
+    // console.log(randomPlace);
     if(randomPossibility === 1){
         //consolelog here
         var donut = {
@@ -174,7 +175,12 @@ const addDonuts = () => {
     } 
 }
 
- 
+// const resetDonuts = (donut) => {
+//     donut.x = Math.random() * (canvas.width - donutsImg.width);
+//     donut.y = 15 + Math.floor(Math.random() * 30) + 1;  
+//     donut.speed = 0.9 + Math.random() * 0.5;
+// }
+
 const moveDonuts = () => {
     donuts.forEach((donut) => {
         donut.y++  
@@ -185,8 +191,10 @@ const moveDonuts = () => {
 //-------- -------------------- --------//
 const addCroissants = () => {
     let randomPossibility = Math.floor(Math.random() * 180) //
-    let randomPlace = Math.floor(Math.random() * canvas.width)
+    let randomPlace = Math.floor(Math.random() * (canvas.width - 30))
+    // console.log(randomPlace);
     if(randomPossibility === 1){
+        // console.log(randomPlace);
         var croissant = {
             x: randomPlace,
             y: 10
@@ -195,12 +203,12 @@ const addCroissants = () => {
     } 
 }
 
-const resetcroissants = (croissant) => {
-    croissant.x = Math.random() * (canvas.width - croissantImg.width);
-    croissant.y = 15 + Math.floor(Math.random() * 30) + 1;  
-    croissant.speed = 0.9 + Math.random() * 0.5;
-   
-}   
+// const resetCroissants = (croissant) => {
+//     croissant.x = Math.random() * (canvas.width - croissantImg.width);
+//     croissant.y = 15 + Math.floor(Math.random() * 30) + 1;  
+//     croissant.speed = 0.9 + Math.random() * 0.5; 
+// }   
+
 const movecroissants = () => {
     croissants.forEach((croissant) => {
         croissant.y++  //si quiero que se mueva mas rapido le pongo que sea +10 o un numero
