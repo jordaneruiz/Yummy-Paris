@@ -61,7 +61,7 @@ let donutsXincrement = 5;
 let donutsYincrement = 5;
 
 let collidedCroissant = [];
-let winningScore = 10; 
+let winningScore = 4; 
 
 
 
@@ -117,6 +117,8 @@ const playOhlalaSound = () => {
     ohlalaSound.volume = "0.9";
     ohlalaSound.play();
 }
+
+
 
 //-------- Start Game Funtion --------//
 //-------- ----------------- --------//
