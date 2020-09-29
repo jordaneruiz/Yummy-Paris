@@ -25,9 +25,20 @@ button.addEventListener('click', () => {
 
     intervalId = setInterval(() => {
         requestAnimationFrame(startGame)
-    }, 8)
+    }, 12)
 
 })
 //add the event listener that will call he game
 
 
+
+//GameOver
+
+const gameOverSplashScreen = () => {
+    //need to target de cnavas
+    canvas = document.querySelector('canvas');
+
+    //need to stop the interval
+
+    
+}

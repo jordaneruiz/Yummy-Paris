@@ -21,13 +21,13 @@ let croissantImg = new Image();
 croissantImg.src = 'Images/croissant.png';
 
 let myMusic = new Audio();
-myMusic.src = "French-Musette.wav";
+myMusic.src = "Sounds/French-Musette.wav";
 
 let yummySound = new Audio();
-yummySound.src = "yummy.mp3";
+yummySound.src = "Sounds/yummy.mp3";
 
 let ohlalaSound = new Audio();
-ohlalaSound.src = "ohlala.mp3";
+ohlalaSound.src = "Sounds/ohlala.mp3";
 
 let gameOverImg = new Image();
 gameOverImg.src = 'Images/stupidfrench3.jpg';
@@ -162,9 +162,10 @@ const startGame = () => {
 const addDonuts = () => {
     let randomPossibility = Math.floor(Math.random() * 190) 
     //randomPlace = place on x axis
-    let randomPlace = Math.floor(Math.random() * canvas.width)
+    let randomPlace = Math.floor(Math.random() * canvas.width)//minus something* to stop the food from going out
     //console.log("randomPlace:" + randomPlace)
     if(randomPossibility === 1){
+        //consolelog here
         var donut = {
             x: randomPlace,
             y: 10
@@ -277,16 +278,30 @@ const gameOver = () => {
     canvas.className = 'hidden'
     
     //to create a new iframe
-    let iframe = document.createElement('iframe')
-    iframe.src = 'gameOverScreen.html'
-    iframe.className = "iframe-gameover"
+    // let iframe = document.createElement('iframe')
+    // iframe.src = 'gameOverScreen.html'
+    // iframe.className = "iframe-gameover"
+
+    let gameOverScreen = document.createElement('div')
+    gameOverScreen.className = "gameoverscreen"
+    gameOverScreen.innerHTML= `
+        <img class="image et-pic" src="Images/ET.png">
+        <h1 class="youlost">Sorry! You Lost!</h1>
+        <h2>Donuts are not good for you!</h2>
+        <iframe src="https://giphy.com/embed/H2u9qk75kqsF1GpCsA" class="giphy-embed" allowFullScreen></iframe>
+        <!-- <button class="btn-start">PLAY AGAIN</button> -->
+        <button class="btn-start" onclick="location.href='index.html'">PLAY AGAIN</button>
+        <img class= "image paris-pic" src="Images/ParisBG.jpg">
+    `
 
     let body = document.querySelector('body') // get the body tag of your main html file
     canvas.parentNode.removeChild(canvas) //remove the canvas from the body
-    body.appendChild(iframe) // append the frame we just created to the body
-    
-    //canvas.load.image('start', 'button.png');
+    // body.appendChild(iframe) // append the frame we just created to the body
+    body.appendChild(gameOverScreen)
+
 };
+
+
     // button.addEventListener('click', () => {
     // //     //when button is clicked it removes the GOver screen & add the canvas
    
