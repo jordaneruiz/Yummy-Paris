@@ -18,35 +18,13 @@ button.addEventListener('click', () => {
     canvas.style.backgroundColor = "#81d6e6";
     canvas.style.borderRadius = "5%";
 
-
-
-
+    newSound();
 
     ctx = canvas.getContext('2d');
     intervalId = 0; 
 
-    //Images
-    // background = new Image();
-    // background.src = 'Images/ParisBG3.jpg';
-
-    // playerImg = new Image();
-    // playerImg.src = 'Images/FR-SMALL-GIRL.png';
-
-    // donutsImg = new Image();
-    // donutsImg.src = 'Images/donuts.png';
-
-    // croissantImg = new Image();
-    // croissantImg.src = 'Images/croissant.png';
-
-    //sound
-    myMusic = new Audio();
-    myMusic.src = "French-Musette.wav";
-
-    // yummySound = new Audio();
-    // yummySound.src = "yummy.mp3";
-
     intervalId = setInterval(() => {
-            requestAnimationFrame(startGame)
+        requestAnimationFrame(startGame)
     }, 8)
 
 })

@@ -41,7 +41,7 @@ h2 {
     border: solid #81d6e6 6px; 
     border-radius: 15px;
     width: 600px;
-    height: 800px;
+    height: 900px;
     padding: 0 auto;
     margin: 0 auto;
 }
@@ -121,7 +121,7 @@ h2 {
     width: 170px;
     height: 95px; 
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   .gameoverscreen > button {
@@ -132,4 +132,8 @@ h2 {
   .winscreen > button {
     margin-top: 0px;    
     margin-bottom: 15px;
+  }
+
+  .iframe-gameover {
+    height: 100%;
   }

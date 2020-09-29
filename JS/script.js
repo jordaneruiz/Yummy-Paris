@@ -20,8 +20,8 @@ donutsImg.src = 'Images/donuts.png';
 let croissantImg = new Image();
 croissantImg.src = 'Images/croissant.png';
 
-// let myMusic = new Audio();
-// myMusic.src = "French-Musette.wav";
+let myMusic = new Audio();
+myMusic.src = "French-Musette.wav";
 
 let yummySound = new Audio();
 yummySound.src = "yummy.mp3";
@@ -58,20 +58,20 @@ let donutsXincrement = 5;
 let donutsYincrement = 5;
 
 let collidedCroissant = [];
-let winningScore = 2; 
+let winningScore = 8; 
 
 
 
 
 
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowUp'){
-        playerY = playerY - playerMovement + 60;
-        // playerY = playerY - 120; 
-        // playerY = playerY + 120;
-    } 
-})
+// document.addEventListener('keydown', (event) => {
+//     if (event.key === 'ArrowUp'){
+//         playerY = playerY - playerMovement - 60;
+//         // playerY = playerY - 120; 
+//         // playerY = playerY + 120;
+//     } 
+// })
 
 
 //-------- Move the girl to R & L --------//
@@ -79,13 +79,13 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener('keydown', function(event){
     if (event.key === 'ArrowRight'){
         if (playerX + playerMovement < canvas.width - playerMovement) {
-            //isRightArrow = true;
+            isRightArrow = true;
             playerX = playerX + playerMovement;
         }
     } 
     else if (event.key === 'ArrowLeft'){
         if (playerX - playerMovement >= 0) {
-            //isLefttArrow = true;
+            isLefttArrow = true;
             playerX = playerX - playerMovement;
         }        
     } 
@@ -102,6 +102,7 @@ document.addEventListener('keyup', function(event){
 const newSound = () => {
     myMusic.volume = "0.05";
     myMusic.play();
+    console.log("sound starts")
   }
 
 const playYummySound = () => {
@@ -138,7 +139,7 @@ const startGame = () => {
     moveDonuts();
     addCroissants();
     movecroissants();
-    newSound();
+    
 
     //playerY += playerIncrement
     //player = new Player(120, canvas.height, 60, 90);
@@ -150,7 +151,7 @@ const startGame = () => {
 //-------- ---------------- --------//
 
 const addDonuts = () => {
-    let randomPossibility = Math.floor(Math.random() * 200) 
+    let randomPossibility = Math.floor(Math.random() * 190) 
     //randomPlace = place on x axis
     let randomPlace = Math.floor(Math.random() * canvas.width)
     //console.log("randomPlace:" + randomPlace)
@@ -173,7 +174,7 @@ const moveDonuts = () => {
 //-------- Add & Move Croissants --------//
 //-------- -------------------- --------//
 const addCroissants = () => {
-    let randomPossibility = Math.floor(Math.random() * 400) //botellas que caeran --> 1 de 20 posibilidades de que se cree un nuevo vino en un lugar aleatorio
+    let randomPossibility = Math.floor(Math.random() * 180) //
     let randomPlace = Math.floor(Math.random() * canvas.width)
     if(randomPossibility === 1){
         var croissant = {
@@ -184,6 +185,12 @@ const addCroissants = () => {
     } 
 }
 
+const resetcroissants = (croissant) => {
+    croissant.x = Math.random() * (canvas.width - croissantImg.width);
+    croissant.y = 15 + Math.floor(Math.random() * 30) + 1;  
+    croissant.speed = 0.9 + Math.random() * 0.5;
+   
+}   
 const movecroissants = () => {
     croissants.forEach((croissant) => {
         croissant.y++  //si quiero que se mueva mas rapido le pongo que sea +10 o un numero
@@ -229,13 +236,14 @@ const collisionCroissants = (i) => {
             playYummySound();
             score += 1;
             collidedCroissant.push(i)
-            
+            //croissants.splice(i, 1);
             //removeCroissants.push(croissants[i]);
             //removeCroissants.push(croissants[i])
             if (score >= winningScore) {
                 clearInterval(intervalId);
                 // alert('YOU WON');
                 location.href = 'youWinScreen.html';
+                // youWin();
             }
             croissants.splice(i, 1);
             //console.log(croissants);
@@ -250,57 +258,74 @@ const collisionCroissants = (i) => {
 //-------- GameOver Function --------//
 
 const gameOver = () => {
+    
+    clearInterval(intervalId);
 
+    myMusic.currentTime = 0; 
+    myMusic.pause();
+    console.log("in game over")
     let canvas = document.querySelector('canvas')
     canvas.className = 'hidden'
     
-    //newSound.stop()
+    //to create a new iframe
     let iframe = document.createElement('iframe')
     iframe.src = 'gameOverScreen.html'
-    let body = document.querySelector('body') // get the body tag of your main html file
-    canvas.parentNode.removeChild(canvas)
-    body.appendChild(iframe)
     iframe.className = "iframe-gameover"
-    newSound.stop();
-    // game.load.image('start', 'button.png');
+
+    let body = document.querySelector('body') // get the body tag of your main html file
+    canvas.parentNode.removeChild(canvas) //remove the canvas from the body
+    body.appendChild(iframe) // append the frame we just created to the body
+    
+    //canvas.load.image('start', 'button.png');
+    
+
+    // button.addEventListener('click', () => {
+    //     //when button is clicked it removes the GOver screen & add the canvas
+    //     let canvasContainer = document.createElement("div")
+    //     canvasContainer.innerHTML = `<canvas id="myCanvas" width="600" height="698"></canvas>`
+        
+    //     iframe.parentNode.removeChild(iframe) // or body.romoveChild(splashscreen)
+    //     body.appendChild(canvasContainer)
+    
+    //     canvas = document.querySelector('canvas');
+    //     canvas.style.border = "7px solid #81d6e6";
+    //     canvas.style.backgroundColor = "#81d6e6";
+    //     canvas.style.borderRadius = "5%";
+    
+
+    
+    //     ctx = canvas.getContext('2d');
+    //     intervalId = 0; 
+    // })
+
 };
+
+// const youWin = () => {
+    
+//     clearInterval(intervalId);
+
+//     myMusic.currentTime = 0; 
+//     myMusic.pause();
+//     console.log("you won")
+//     let canvas = document.querySelector('canvas')
+//     canvas.className = 'hidden'
+    
+//     //to create a new iframe
+//     let iframe = document.createElement('iframe')
+//     iframe.src = 'youWinScreen.html'
+//     iframe.className = "iframe-youwon"
+
+//     let body = document.querySelector('body') // get the body tag of your main html file
+//     canvas.parentNode.removeChild(canvas) //remove the canvas from the body
+//     body.appendChild(iframe) // append the frame we just created to the body
+    
+   
+// };
 
 
 
 //-------- Win Function --------//
 
-// const youWon = () => {
-//     let canvas = document.querySelector('canvas');
-//     let ctx = canvas.getContext('2d')
-//     let bakgroundWin = new Image();
-
-//     bakgroundWin.onload = function(){
-//     ctx.drawImage(bakgroundWin, 0, 0, 760, 760);
-//     mySound.stop();
-//     // game.load.image('start', 'button.png');
-// };
-// bakgroundWin = "https://tenor.com/view/trump-macron-macron-trump-emmanuel-macron-donald-trump-gif-12954394"
-
-// winSound.play();
-// wines=[];
-// score=0;
-// dead=0;
-
-// }
-
-
-// const collisionCroissants = () => {
-//     let croissantsToRemove =  []; 
-
-//     croissants.forEach((croissant) => {
-//         if (playerX < croissants[i].x + croissantImg.width &&
-//             playerX + playerImg.width > croissants[i].x &&
-//             playerY < croissants[i].y + croissantImg.height &&
-//             playerY + playerImg.height > croissants[i].y);
-//     })
-//     //score++;
-//     //croissantsToRemove.push(croissant);
-// }
 
 
 
