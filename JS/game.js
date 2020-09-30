@@ -25,7 +25,8 @@ button.addEventListener('click', () => {
 
     intervalId = setInterval(() => {
         requestAnimationFrame(startGame)
-    }, 12)
+    }, 10)
+    
 
 })
 //add the event listener that will call he game

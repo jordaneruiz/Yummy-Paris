@@ -8,9 +8,6 @@ let ctx;
 let background = new Image();
 background.src = 'Images/ParisBG3.jpg';
 
-// let bakgroundWin = new Image();
-// bakgroundWin = "https://tenor.com/view/trump-macron-macron-trump-emmanuel-macron-donald-trump-gif-12954394"
-
 let playerImg = new Image();
 playerImg.src = 'Images/FR-SMALL-GIRL.png';
 
@@ -61,20 +58,10 @@ let donutsXincrement = 5;
 let donutsYincrement = 5;
 
 let collidedCroissant = [];
-let winningScore = 4; 
+let winningScore = 2; 
 
 
 
-
-
-
-// document.addEventListener('keydown', (event) => {
-//     if (event.key === 'ArrowUp'){
-//         playerY = playerY - playerMovement - 60;
-//         // playerY = playerY - 120; 
-//         // playerY = playerY + 120;
-//     } 
-// })
 
 
 //-------- Move the girl to R & L --------//
@@ -97,7 +84,6 @@ document.addEventListener('keydown', function(event){
 document.addEventListener('keyup', function(event){
     isRightArrow = false;
     isLefttArrow = false;
-    //use a loop
 })
 
 
@@ -130,19 +116,19 @@ const startGame = () => {
     ctx.fillStyle = "white"
     ctx.fillText('Score: ' + score, 10,canvas.height-645 )
 
-    //draw donust and croissants
+    //Draw the donust
     for (let i = 0; i < donuts.length; i++) {
         ctx.drawImage(donutsImg, donuts[i].x, donuts[i].y);
         collisionDonuts(i);
     }
-    
-    
+   
+    //Draw the croissants
     for (let i = 0; i < croissants.length; i++) {
+        if (croissants[i] != null){
         ctx.drawImage(croissantImg, croissants[i].x, croissants[i].y);
         collisionCroissants(i);
+        }
     }
-
-
     //call all the functions
     addDonuts();
     moveDonuts();
@@ -150,23 +136,15 @@ const startGame = () => {
     movecroissants();
     // resetDonuts();
     // resetCroissants();
-
-    //playerY += playerIncrement
-    //player = new Player(120, canvas.height, 60, 90);
-    
-    // resetDonuts(donut);
 };
 
 //-------- Add & Move Donuts --------//
 //-------- ---------------- --------//
-
 const addDonuts = () => {
     let randomPossibility = Math.floor(Math.random() * 190) 
     //randomPlace = place on x axis
-    let randomPlace = Math.floor(Math.random() * (canvas.width  - 30))//minus something* to stop the food from going out
-    // console.log(randomPlace);
+    let randomPlace = Math.floor(Math.random() * (canvas.width  - 30))//minus NUMBER to stop the food from going out of the canvas
     if(randomPossibility === 1){
-        //consolelog here
         var donut = {
             x: randomPlace,
             y: 10
@@ -192,9 +170,7 @@ const moveDonuts = () => {
 const addCroissants = () => {
     let randomPossibility = Math.floor(Math.random() * 180) //
     let randomPlace = Math.floor(Math.random() * (canvas.width - 30))
-    // console.log(randomPlace);
     if(randomPossibility === 1){
-        // console.log(randomPlace);
         var croissant = {
             x: randomPlace,
             y: 10
@@ -211,7 +187,11 @@ const addCroissants = () => {
 
 const movecroissants = () => {
     croissants.forEach((croissant) => {
-        croissant.y++  //si quiero que se mueva mas rapido le pongo que sea +10 o un numero
+        croissant && croissant.y++ 
+        //same as:
+        // if (croissant != null) {
+        //     croissant.y++
+        // }
     })
 }
 
@@ -220,20 +200,15 @@ const movecroissants = () => {
 //-------- --------------- --------//
 
 const collisionDonuts = (i) => {
-    //Did they collide together?
-    //Check if a donut collides with the player
-    
-    if (playerX < (donuts[i].x -25) + donutsImg.width  &&
-        playerX + donutsImg.width> (donuts[i].x -25) &&
-        playerY < (donuts[i].y -10) + donutsImg.height &&
-        playerY + donutsImg.height > (donuts[i].y -10)) 
+   
+    if (playerX < (donuts[i].x /*-25*/) + donutsImg.width  &&
+        playerX + donutsImg.width> (donuts[i].x /*-25*/) &&
+        playerY < (donuts[i].y /*-10*/) + donutsImg.height &&
+        playerY + donutsImg.height > (donuts[i].y /*-10*/)) 
         {
-         // collision detected!
         clearInterval(intervalId);
         //newSound.stop();
         gameOver();
-        //alert('GAME OVER');
-        //location.reload(); 
      } 
 } 
 
@@ -246,32 +221,33 @@ const collisionCroissants = (i) => {
     //let removeCroissants = [];
 
      if (playerX < croissants[i].x + croissantImg.width &&
-        playerX + playerImg.width > croissants[i].x &&
+        playerX + playerImg.width >= croissants[i].x &&
         playerY < croissants[i].y + croissantImg.height &&
         playerY + playerImg.height > croissants[i].y) 
         {
+           
           if (!collidedCroissant.includes(i)) {
               console.log("croissant collision")
-              console.log(croissants)
+              console.log('inside ', i)
             playYummySound();
             score += 1;
             collidedCroissant.push(i)
+            console.log(collidedCroissant)
             //croissants.splice(i, 1);
-            //removeCroissants.push(croissants[i]);
-            //removeCroissants.push(croissants[i])
+
             if (score >= winningScore) {
+                playYummySound();
                 clearInterval(intervalId);
                 location.href = 'youWinScreen.html';
-                // youWin();
-                // alert('YOU WON');
-
             }
-            croissants.splice(i, 1);
-            //console.log(croissants);
+            croissants[i] = null
+
+            //croissants.splice(i, 1);
+            console.log(croissants);
           } 
-          //collidedCroissant = removeCroissants; 
-          //collidedCroissant.push(croissants[i]);
-          //collidedCroissant = croissants[i]; 
+          else {
+
+          }
     }
 }
 
@@ -284,7 +260,7 @@ const gameOver = () => {
 
     myMusic.currentTime = 0; 
     myMusic.pause();
-    console.log("in game over")
+    //console.log("in game over")
     let canvas = document.querySelector('canvas')
     canvas.className = 'hidden'
     
@@ -311,6 +287,16 @@ const gameOver = () => {
     body.appendChild(gameOverScreen)
 
 };
+
+
+
+
+
+
+
+
+
+
 
 
     // button.addEventListener('click', () => {
@@ -397,3 +383,12 @@ const gameOver = () => {
 // document.addEventListener('mouseup', () => {
 //     playerIncrement = 0.5
 // })
+
+// document.addEventListener('keydown', (event) => {
+//     if (event.key === 'ArrowUp'){
+//         playerY = playerY - playerMovement - 60;
+//         // playerY = playerY - 120; 
+//         // playerY = playerY + 120;
+//     } 
+// })
+//playerY += playerIncrement
