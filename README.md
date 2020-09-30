@@ -87,3 +87,4 @@ gameTime(){}
 ## Links
 
 [Trello link](https://trello.com/b/htlPz7VD/ironhack-m1-project)
+[Game Link](https://jordaneruiz.github.io/Yummy-Paris/)

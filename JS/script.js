@@ -251,6 +251,8 @@ const collisionCroissants = (i) => {
         playerY + playerImg.height > croissants[i].y) 
         {
           if (!collidedCroissant.includes(i)) {
+              console.log("croissant collision")
+              console.log(croissants)
             playYummySound();
             score += 1;
             collidedCroissant.push(i)
@@ -259,9 +261,10 @@ const collisionCroissants = (i) => {
             //removeCroissants.push(croissants[i])
             if (score >= winningScore) {
                 clearInterval(intervalId);
-                // alert('YOU WON');
                 location.href = 'youWinScreen.html';
                 // youWin();
+                // alert('YOU WON');
+
             }
             croissants.splice(i, 1);
             //console.log(croissants);

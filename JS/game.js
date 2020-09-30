@@ -40,5 +40,5 @@ const gameOverSplashScreen = () => {
 
     //need to stop the interval
 
-    
+
 }
