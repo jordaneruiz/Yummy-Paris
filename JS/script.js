@@ -60,7 +60,9 @@ let totalcroissants = 10;
 let croissants = [] ;
 
 let donutsXincrement = 5;
-let donutsYincrement = 5;
+let donutsYincrement = 2;
+let donutsYincrementMore = 4;
+
 
 let collidedCroissant = [];
 let winningScore = 10; 
@@ -151,16 +153,28 @@ const startGame = () => {
 //-------- Add & Move Donuts --------//
 //-------- ---------------- --------//
 const addDonuts = () => {
-    let randomPossibility = Math.floor(Math.random() * 190) 
-    //randomPlace = place on x axis
-    let randomPlace = Math.floor(Math.random() * (canvas.width  - 30))//minus NUMBER to stop the food from going out of the canvas
-    if(randomPossibility === 1){
-        var donut = {
-            x: randomPlace,
-            y: 10
-        }
-            donuts.push(donut);
-    } 
+    if (score < 8) {
+        let randomPossibility = Math.floor(Math.random() * 190) 
+        //randomPlace = place on x axis
+        let randomPlace = Math.floor(Math.random() * (canvas.width  - 30))//minus NUMBER to stop the food from going out of the canvas
+        if(randomPossibility === 1){
+            var donut = {
+                x: randomPlace,
+                y: 10
+            }
+                donuts.push(donut);
+        } 
+    } else {
+        let randomPossibility = Math.floor(Math.random() * 60) 
+        let randomPlace = Math.floor(Math.random() * (canvas.width  - 30))//minus NUMBER to stop the food from going out of the canvas
+        if(randomPossibility === 1){
+            var donut = {
+                x: randomPlace,
+                y: 10
+            }
+                donuts.push(donut);
+        } 
+    }
 }
 
 // const resetDonuts = (donut) => {
@@ -171,7 +185,13 @@ const addDonuts = () => {
 
 const moveDonuts = () => {
     donuts.forEach((donut) => {
-        donut.y++  
+        if (score <= 4) {
+            donut.y++
+        } else if (score > 4 && score <= 8 ) {
+            donut.y += donutsYincrement
+        } else {
+            donut.y += donutsYincrementMore
+        }
     })
 }
 
@@ -187,6 +207,9 @@ const addCroissants = () => {
         }
         croissants.push(croissant);
     } 
+    // if (score > 5){
+    //     let randomPossibility = Math.floor(Math.random() * 180) //
+    // }
 }
 
 // const resetCroissants = (croissant) => {
@@ -237,8 +260,8 @@ const collisionCroissants = (i) => {
         {
            
           if (!collidedCroissant.includes(i)) {
-              console.log("croissant collision")
-              console.log('inside ', i)
+            //   console.log("croissant collision")
+            //   console.log('inside ', i)
             playYummySound();
             score += 1;
             collidedCroissant.push(i)
