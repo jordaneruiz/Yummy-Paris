@@ -58,7 +58,7 @@ let donutsXincrement = 5;
 let donutsYincrement = 5;
 
 let collidedCroissant = [];
-let winningScore = 2; 
+let winningScore = 10; 
 
 
 
