@@ -17,6 +17,10 @@ donutsImg.src = 'Images/donuts.png';
 let croissantImg = new Image();
 croissantImg.src = 'Images/croissant.png';
 
+let gameOverImg = new Image();
+gameOverImg.src = 'Images/stupidfrench3.jpg';
+
+//Audio
 let myMusic = new Audio();
 myMusic.src = "Sounds/French-Musette.wav";
 
@@ -26,8 +30,9 @@ yummySound.src = "Sounds/yummy.mp3";
 let ohlalaSound = new Audio();
 ohlalaSound.src = "Sounds/ohlala.mp3";
 
-let gameOverImg = new Image();
-gameOverImg.src = 'Images/stupidfrench3.jpg';
+let championSound = new Audio();
+championSound.src = "Sounds/champion.mp3";
+
 
 //Variables
 let score = 0;
@@ -58,7 +63,7 @@ let donutsXincrement = 5;
 let donutsYincrement = 5;
 
 let collidedCroissant = [];
-let winningScore = 10; 
+let winningScore = 2; 
 
 
 
@@ -102,6 +107,11 @@ const playYummySound = () => {
 const playOhlalaSound = () => {
     ohlalaSound.volume = "0.9";
     ohlalaSound.play();
+}
+
+const playVictorySound = () => {
+    championSound.volume = "0.07";
+    championSound.play();
 }
 
 
@@ -236,9 +246,10 @@ const collisionCroissants = (i) => {
             //croissants.splice(i, 1);
 
             if (score >= winningScore) {
-                playYummySound();
-                clearInterval(intervalId);
-                location.href = 'youWinScreen.html';
+                youWon();
+                // playYummySound();
+                // clearInterval(intervalId);
+                // location.href = 'youWinScreen.html';
             }
             croissants[i] = null
 
@@ -289,7 +300,35 @@ const gameOver = () => {
 };
 
 
+//-------- YouWon Function --------//
 
+const youWon = () => {
+    playYummySound();
+    playVictorySound();
+    clearInterval(intervalId);
+
+    myMusic.currentTime = 0; 
+    myMusic.pause();
+    //console.log("in game over")
+    let canvas = document.querySelector('canvas')
+    canvas.className = 'hidden'
+
+    let winningScreen = document.createElement('div')
+    winningScreen.className = "winscreen"
+    winningScreen.innerHTML= `
+        <img class="image et-pic" src="Images/ET.png">
+        <h1 class="youwon">Bravo! You Won!</h1>
+        <!-- <h1></h1> -->
+        <h2>You ate all the croissants!</h2>
+        <iframe src="https://giphy.com/embed/5ntPfSOAmcy1jQ01g7" class="giphy-embed" allowFullScreen></iframe>
+        <button class="btn-start" onclick="location.href='index.html'">PLAY AGAIN</button>
+        <img class= "image paris-pic" src="Images/ParisBG.jpg">
+    `
+    let body = document.querySelector('body') // get the body tag of your main html file
+    canvas.parentNode.removeChild(canvas) //remove the canvas from the body
+    // body.appendChild(iframe) // append the frame we just created to the body
+    body.appendChild(winningScreen)
+}
 
 
 
