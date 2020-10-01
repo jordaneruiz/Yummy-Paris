@@ -47,9 +47,6 @@ let playerHeight = 125;
 let isRightArrow = false;
 let isLefttArrow = false;
 
-
-// let totalDonuts = 10;
-//let donuts = [] ;
 let donuts = [ { x: 700, y: 150 } ];
 let donutsX = donuts.x; // x position
 let donutsY = donuts.y; // y position
@@ -63,9 +60,8 @@ let donutsXincrement = 5;
 let donutsYincrement = 2;
 let donutsYincrementMore = 4;
 
-
 let collidedCroissant = [];
-let winningScore = 10; 
+let winningScore = 11; 
 
 
 
@@ -148,10 +144,6 @@ const startGame = () => {
     moveDonuts();
     addCroissants();
     movecroissants();
-    // resetDonuts();
-    // resetCroissants();
-
-
 };
 
 //-------- Add & Move Donuts --------//
@@ -211,9 +203,6 @@ const addCroissants = () => {
         }
         croissants.push(croissant);
     } 
-    // if (score > 5){
-    //     let randomPossibility = Math.floor(Math.random() * 180) //
-    // }
 }
 
 // const resetCroissants = (croissant) => {
@@ -225,10 +214,7 @@ const addCroissants = () => {
 const movecroissants = () => {
     croissants.forEach((croissant) => {
         croissant && croissant.y++ 
-        //same as:
-        // if (croissant != null) {
-        //     croissant.y++
-        // }
+        //same as: if (croissant != null) { croissant.y++ }
     })
 }
 
@@ -244,7 +230,6 @@ const collisionDonuts = (i) => {
         playerY + donutsImg.height > (donuts[i].y -10)) 
         {
         clearInterval(intervalId);
-        //newSound.stop();
         gameOver();
      } 
 } 
@@ -284,7 +269,6 @@ const collisionCroissants = (i) => {
             console.log(croissants);
           } 
           else {
-
           }
     }
 }
@@ -302,7 +286,7 @@ const gameOver = () => {
     let canvas = document.querySelector('canvas')
     canvas.className = 'hidden'
     
-    //to create a new iframe
+    //to create a new iframe without DOM Manip
     // let iframe = document.createElement('iframe')
     // iframe.src = 'gameOverScreen.html'
     // iframe.className = "iframe-gameover"
@@ -318,12 +302,10 @@ const gameOver = () => {
         <button class="btn-start" onclick="location.href='index.html'">PLAY AGAIN</button>
         <img class= "image paris-pic" src="Images/ParisBG.jpg">
     `
-
     let body = document.querySelector('body') // get the body tag of your main html file
     canvas.parentNode.removeChild(canvas) //remove the canvas from the body
     // body.appendChild(iframe) // append the frame we just created to the body
     body.appendChild(gameOverScreen)
-
 };
 
 
@@ -365,69 +347,4 @@ const youWon = () => {
 
 
 
-    // button.addEventListener('click', () => {
-    // //     //when button is clicked it removes the GOver screen & add the canvas
    
-    //     let iframeGameOver = document.getElementsByClassName('.iframe-gameover');
-    //     iframeGameOver.className = 'hidden';
-
-    //     let canvas = document.querySelector('canvas')
-    //     let body = document.querySelector('body') // get the body tag of your main html file
-    //     iframeGameOver.parentNode.removeChild(iframeGameOver) //remove the canvas from the body
-    //     body.appendChild(canvas)
-    // });
-
-    
-    //     ctx = canvas.getContext('2d');
-    //     intervalId = 0; 
-    // })
-
-    // }
-
-
-
-
-// intervalId = setInterval(() => {
-//     requestAnimationFrame(startGame)
-// }, 10)
-
-
-
-
-
-
-//Jorge Event listener
-// document.addEventListener('keydown', (event) => {
-//     if (event.key === "38") {
-//         playerIncrement = +20
-//     } 
-//     if (event.key === "40"){
-//         playerIncrement = -20
-//     }
-// })
-
-// document.addEventListener('keyup', () => {
-//     playerIncrement = 1
-//     if (playerY > canvas.height-10){
-//         playerIncrement = 1
-//     }
-// })
-
-
-//my first event listener
-// document.addEventListener('mousedown', (event) => {
-//     playerIncrement = -1
-// })
-
-// document.addEventListener('mouseup', () => {
-//     playerIncrement = 0.5
-// })
-
-// document.addEventListener('keydown', (event) => {
-//     if (event.key === 'ArrowUp'){
-//         playerY = playerY - playerMovement - 60;
-//         // playerY = playerY - 120; 
-//         // playerY = playerY + 120;
-//     } 
-// })
-//playerY += playerIncrement
