@@ -38,7 +38,7 @@ championSound.src = "Sounds/champion.mp3";
 let score = 0;
 let playerX = 120;
 let playerY = 550;
-let playerIncrement = 1;
+let playerIncrement = -6;
 let playerMovement = 40; 
 
 let palyerWidth = 70;
@@ -95,6 +95,8 @@ document.addEventListener('keyup', function(event){
 
 
 
+
+
 const newSound = () => {
     myMusic.volume = "0.05";
     myMusic.play();
@@ -148,6 +150,8 @@ const startGame = () => {
     movecroissants();
     // resetDonuts();
     // resetCroissants();
+
+
 };
 
 //-------- Add & Move Donuts --------//
@@ -234,10 +238,10 @@ const movecroissants = () => {
 
 const collisionDonuts = (i) => {
    
-    if (playerX < (donuts[i].x /*-25*/) + donutsImg.width  &&
-        playerX + donutsImg.width> (donuts[i].x /*-25*/) &&
-        playerY < (donuts[i].y /*-10*/) + donutsImg.height &&
-        playerY + donutsImg.height > (donuts[i].y /*-10*/)) 
+    if (playerX < (donuts[i].x -15) + donutsImg.width  &&
+        playerX + donutsImg.width> (donuts[i].x -15) &&
+        playerY < (donuts[i].y -10) + donutsImg.height &&
+        playerY + donutsImg.height > (donuts[i].y -10)) 
         {
         clearInterval(intervalId);
         //newSound.stop();
@@ -379,33 +383,6 @@ const youWon = () => {
     // })
 
     // }
-
-
-// const youWin = () => {
-    
-//     clearInterval(intervalId);
-
-//     myMusic.currentTime = 0; 
-//     myMusic.pause();
-//     console.log("you won")
-//     let canvas = document.querySelector('canvas')
-//     canvas.className = 'hidden'
-    
-//     //to create a new iframe
-//     let iframe = document.createElement('iframe')
-//     iframe.src = 'youWinScreen.html'
-//     iframe.className = "iframe-youwon"
-
-//     let body = document.querySelector('body') // get the body tag of your main html file
-//     canvas.parentNode.removeChild(canvas) //remove the canvas from the body
-//     body.appendChild(iframe) // append the frame we just created to the body
-    
-   
-// };
-
-
-
-//-------- Win Function --------//
 
 
 
