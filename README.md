@@ -3,7 +3,7 @@
 ## DESCRIPTION
 Yummy Paris is a game where you are taken in a delicious adventure. Your character has to jump or stay fix to catch & eat the fresh croissants. But be careful! On your way, you will also encounter Donuts! The Donuts are bad for you and your health! Avoid them by either jumping or going down. 
 
-The game ends whenever you eat a donuts. The score rise up everytime to eat a croissant. The more croissant you eat, the better your score will be.
+The game ends whenever you eat a donuts. The score rises up everytime to eat a croissant. The more croissant you eat, the better your score will be.
 
 
 ## MVP (DOM - CANVAS)

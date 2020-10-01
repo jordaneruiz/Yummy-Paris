@@ -39,7 +39,7 @@ let score = 0;
 let playerX = 120;
 let playerY = 550;
 let playerIncrement = -6;
-let playerMovement = 40; 
+let playerMovement = 20; 
 
 let palyerWidth = 70;
 let playerHeight = 125;
