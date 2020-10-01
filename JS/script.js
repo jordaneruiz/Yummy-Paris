@@ -125,7 +125,7 @@ const playVictorySound = () => {
 const startGame = () => {
     
     ctx.drawImage(background, 0, 0 )
-    ctx.drawImage(playerImg, playerX, playerY )
+    ctx.drawImage(playerImg, playerX, playerY)
     ctx.font = '22px Verdana'
     ctx.fillStyle = "white"
     ctx.fillText('Score: ' + score, 10,canvas.height-645 )
