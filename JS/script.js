@@ -71,7 +71,7 @@ let winningScore = 11;
 //-------- --------------------- --------//
 document.addEventListener('keydown', function(event){
     if (event.key === 'ArrowRight'){
-        if (playerX + playerMovement < canvas.width - playerMovement) {
+        if (playerX + playerMovement < canvas.width - playerMovement - 25) {
             isRightArrow = true;
             playerX = playerX + playerMovement;
         }
@@ -143,7 +143,7 @@ const startGame = () => {
     addDonuts();
     moveDonuts();
     addCroissants();
-    movecroissants();
+    moveCroissants();
 };
 
 //-------- Add & Move Donuts --------//
@@ -211,7 +211,7 @@ const addCroissants = () => {
 //     croissant.speed = 0.9 + Math.random() * 0.5; 
 // }   
 
-const movecroissants = () => {
+const moveCroissants = () => {
     croissants.forEach((croissant) => {
         croissant && croissant.y++ 
         //same as: if (croissant != null) { croissant.y++ }
