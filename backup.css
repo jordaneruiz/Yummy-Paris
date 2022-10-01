@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yummy Paris</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body style="border: 2px solid orange">
+    <div class="splashscreen" style="border: 2px solid red">
+      <!--<img class="image et-pic" src="Images/ET.png">
+        <h1 class="splash-title">Yummy Paris</h1>
+-->
+      <img class="image paris-pic" src="Images/BGPARIS.png" />
+      <div class="splash-text">
+        <h2 class="splash-title-2">Bienvenue à Paris</h2>
+        <p>Catch the Delicious Croissants by moving left or right!</p>
+        <p>
+          Avoid the Fat Donuts! 1 donut is enough to die from a heart attack!
+        </p>
+        <button class="btn-start">START THE GAME</button>
+      </div>
+    </div>
+    <script src="JS/game.js"></script>
+    <!-- <canvas id="myCanvas" width="650" height="300"></canvas> -->
+    <script src="JS/script.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
+body {
+    font-family: "Roboto";
+    line-height: 2px;
+    max-height: 700px;
+    width: 100%;
+    position: relative;
+
+}
+
+.plashscreen {
+  position: relative;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 50%;
+
+}
+
+.splash-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.splashscreen img {
+  flex-shrink: 0;
+  max-width: 100%;
+  max-height: 100%
+}
+
+/* .splashscreen {
+  background-image: url("Images/BGPARIS.png");
+  background-position: center;
+  background-attachment: fixed;
+  background-position: center; 
+  height: 1300px;
+  width: 800px;
+    
+} */
+.winscreen, .gameoverscreen {
+    
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border: solid #81d6e6 6px; 
+  border-radius: 15px;
+  width: 600px;
+  height: 800px;
+  padding: 0 auto;
+  margin: 0 auto;
+}
+
+.et-pic {
+    height: 120px;
+    margin: 0px;
+}
+
+h1 {
+  font-family: "Roboto";
+  color: #81d6e6;
+  font-size: 70px;
+  font-weight: 300;
+  margin-top: 70px;
+}
+ .splash-title {
+    font-family: "Dancing Script";
+    color: #81d6e6;
+    font-size: 70px;
+    /* line-height: 1em; */
+    font-weight: 300;
+    margin-top: 70px;
+  } 
+
+  .splash-title-2 {
+    font-family: "Dancing Script";
+    font-size: 40px;
+  }
+
+  .youwon,  .youlost {
+    color: #81d6e6;
+    font-size: 50px;
+    /* line-height: 1em; */
+    font-weight: 300;
+  }
+
+ 
+
+
+/* .paris-pic {
+    height: auto;
+    width: 100%;
+    /* margin-bottom: 50px; 
+}  */
+
+  /* body > div {
+    height: 450px;
+    width: 600px; 
+    padding-top: 50px;
+    position: relative;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  } */
+
+
+  button {
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #81d6e6;
+    border-color: white;
+    color : white;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 900;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    }  
+
+    button:hover {
+        transition-duration: 0.4s;
+        background-color: #81d698; 
+        color: white;
+      }
+ 
+
+  p {
+    line-height: 0.05em;
+  }
+
+  /*Canvas Style*/
+
+  #myCanvas {
+      /* border: 2px solid greenyellow; */
+      display: block;
+      margin: 0 auto;
+      width: 500px;
+      height: 550px;
+      margin-top: 10%;
+  }
+
+  iframe {
+    height: 100px;
+  }
+
+
+  /* to hide the canvas when gameOver */
+  .hidden {
+    display: none;
+  }
+
+  Body > .iframe-gameover {
+    height: 100%;
+    width: 100%; 
+  }
+
+  .giphy-embed {
+    border: solid #81d6e6 5px; 
+    border-radius: 15px;
+    background-color: #81d6e6;
+    width: 170px;
+    height: 95px; 
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  .gameoverscreen > button {
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+
+  .winscreen > button {
+    margin-top: 0px;    
+    margin-bottom: 15px;
+  }
+
+  /* .iframe-gameover {
+    height: 100%;
+  } */
+
+
+
+
+
+
+
+
+
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
+body {
+    font-family: "Roboto";
+    line-height: 2px;
+    max-height: 700px;
+    width: 100%;
+    position: relative;
+
+}
+
+.plashscreen {
+  position: relative;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 50%;
+
+}
+
+.splash-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.splashscreen img {
+  flex-shrink: 0;
+  max-width: 100%;
+  max-height: 100%
+}
+
+/* .splashscreen {
+  background-image: url("Images/BGPARIS.png");
+  background-position: center;
+  background-attachment: fixed;
+  background-position: center; 
+  height: 1300px;
+  width: 800px;
+    
+} */
+.winscreen, .gameoverscreen {
+    
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border: solid #81d6e6 6px; 
+  border-radius: 15px;
+  width: 600px;
+  height: 800px;
+  padding: 0 auto;
+  margin: 0 auto;
+}
+
+.et-pic {
+    height: 120px;
+    margin: 0px;
+}
+
+h1 {
+  font-family: "Roboto";
+  color: #81d6e6;
+  font-size: 70px;
+  font-weight: 300;
+  margin-top: 70px;
+}
+ .splash-title {
+    font-family: "Dancing Script";
+    color: #81d6e6;
+    font-size: 70px;
+    /* line-height: 1em; */
+    font-weight: 300;
+    margin-top: 70px;
+  } 
+
+  .splash-title-2 {
+    font-family: "Dancing Script";
+    font-size: 40px;
+  }
+
+  .youwon,  .youlost {
+    color: #81d6e6;
+    font-size: 50px;
+    /* line-height: 1em; */
+    font-weight: 300;
+  }
+
+ 
+
+
+/* .paris-pic {
+    height: auto;
+    width: 100%;
+    /* margin-bottom: 50px; 
+}  */
+
+  /* body > div {
+    height: 450px;
+    width: 600px; 
+    padding-top: 50px;
+    position: relative;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  } */
+
+
+  button {
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #81d6e6;
+    border-color: white;
+    color : white;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 900;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    }  
+
+    button:hover {
+        transition-duration: 0.4s;
+        background-color: #81d698; 
+        color: white;
+      }
+ 
+
+  p {
+    line-height: 0.05em;
+  }
+
+  /*Canvas Style*/
+
+  #myCanvas {
+      /* border: 2px solid greenyellow; */
+      display: block;
+      margin: 0 auto;
+      width: 500px;
+      height: 550px;
+      margin-top: 10%;
+  }
+
+  iframe {
+    height: 100px;
+  }
+
+
+  /* to hide the canvas when gameOver */
+  .hidden {
+    display: none;
+  }
+
+  Body > .iframe-gameover {
+    height: 100%;
+    width: 100%; 
+  }
+
+  .giphy-embed {
+    border: solid #81d6e6 5px; 
+    border-radius: 15px;
+    background-color: #81d6e6;
+    width: 170px;
+    height: 95px; 
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  .gameoverscreen > button {
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+
+  .winscreen > button {
+    margin-top: 0px;    
+    margin-bottom: 15px;
+  }
+
+  /* .iframe-gameover {
+    height: 100%;
+  } */

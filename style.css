@@ -1,16 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
+html {
+    height: 100%;
+}
 body {
     font-family: "Roboto";
-    line-height: 2px;
-    height: 800px;
-    
+    min-height: 100%;
+    background: #f3dcf2;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+}
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* body { min-height: 100vh; } */
+
+
+.splashscreen, .gameoverscreen, .winscreen {
+    margin-top: 5%;
+    margin-bottom: auto;
+    background-image: url("Images/BGPARIS.png");
+    height: 720px;
+    width: 450px;
+    background-size: 450px;
+    display: inline-block;
 }
 
-.et-pic {
-    height: 120px;
-    margin: 0px;
+.gameoverscreen > .splash-text {
+  margin-top: 60%;
 }
+
+.winscreen > .splash-text {
+  margin-top: 60%;
+}
+.splash-text {
+    margin-top: 70%;
+}
+
+
 
 h1 {
   font-family: "Roboto";
@@ -19,6 +50,7 @@ h1 {
   font-weight: 300;
   margin-top: 70px;
 }
+
  .splash-title {
     font-family: "Dancing Script";
     color: #81d6e6;
@@ -31,6 +63,7 @@ h1 {
   .splash-title-2 {
     font-family: "Dancing Script";
     font-size: 40px;
+    color: white;
   }
 
   .youwon,  .youlost {
@@ -43,8 +76,8 @@ h1 {
  
 
 
-
-.splashscreen, .winscreen, .gameoverscreen {
+/* .winscreen, .gameoverscreen {
+    
     display: flex; 
     flex-direction: column;
     align-items: center;
@@ -56,7 +89,7 @@ h1 {
     height: 800px;
     padding: 0 auto;
     margin: 0 auto;
-}
+} */
   
 .paris-pic {
     height: auto;
@@ -76,7 +109,7 @@ h1 {
   } */
 
 
-  button {
+  /* button {
     border-radius: 15px;
     padding: 20px;
     background-color: #81d6e6;
@@ -93,11 +126,14 @@ h1 {
         transition-duration: 0.4s;
         background-color: #81d698; 
         color: white;
-      }
+      } */
  
 
   p {
-    line-height: 0.05em;
+    line-height: 1.5em;
+    font-size: 16px;
+    color: #FFFFFF;
+
   }
 
   /*Canvas Style*/
@@ -121,10 +157,10 @@ h1 {
     display: none;
   }
 
-  Body > .iframe-gameover {
+  /* Body > .iframe-gameover {
     height: 100%;
     width: 100%; 
-  }
+  } */
 
   .giphy-embed {
     border: solid #81d6e6 5px; 
@@ -136,16 +172,66 @@ h1 {
     margin-bottom: 10px;
   }
 
-  .gameoverscreen > button {
+  /* .gameoverscreen > button {
     margin-top: 0px;
     margin-bottom: 15px;
-  }
+  } */
 
-  .winscreen > button {
-    margin-top: 0px;    
-    margin-bottom: 15px;
-  }
+
 
   /* .iframe-gameover {
     height: 100%;
   } */
+
+  /* winscreen */
+  /* .winscreen > button {
+    margin-top: 0px;    
+    margin-bottom: 15px;
+  } */
+
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.buttons {
+    /* margin: 4%; */
+    text-align: center;
+}
+
+.btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-1 {
+    background-image: linear-gradient(to right, #FF0099 , #FDF023, #00FFFF, #FDF023);
+    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+}
